@@ -1,0 +1,5 @@
+node_modules/
+arquivos_gerados/
+divididos/
+_testes.js
+*.mp4
