@@ -1,3 +1,7 @@
+/* 
+	Para que este código funcione é necessário instalar o ffmpeg e adicioná-lo no ambiente de variáveis
+*/
+
 const ffmpeg = require('fluent-ffmpeg');
 const xlsx = require('xlsx');
 const fs = require('fs');
