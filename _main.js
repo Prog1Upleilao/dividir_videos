@@ -1,11 +1,12 @@
 /* 
 	Para que este código funcione é necessário instalar o ffmpeg e adicioná-lo no ambiente de variáveis
 */
-
 const ffmpeg = require('fluent-ffmpeg');
 const xlsx = require('xlsx');
 const fs = require('fs');
 const { color } = require('colors');
+
+const PASTA_DESTINO = 'Z:/DOCUMENTOS/projetos/videos_divididos/'
 
 
 const dividirVideo = (tempos, index) => {
@@ -19,14 +20,14 @@ const dividirVideo = (tempos, index) => {
 	if (obj.segundo_duracao <=0) {return false};
 	
 	//cria pasta caso não exista
-	fs.mkdir(`${__dirname}\\divididos`, (err) => { });
+	fs.mkdir(PASTA_DESTINO, (err) => { });
 	
 	const tempoInicial = formatarHora(obj.tempo_inicial);
 	const tempoFinal = formatarHora(obj.tempo_final);
 
 	const arquivoEntrada = `${obj.nome_video_entrada}`
 	const nomeVideoEntrada = `${__dirname}\\${arquivoEntrada}`;
-	const nomeVideoSaida = `${__dirname}\\divididos\\${arquivoEntrada.replace(/(\.\w{0,4})$/, '')}_${tempoInicial}_a_${tempoFinal}.mp4`;
+	const nomeVideoSaida = `${PASTA_DESTINO}${arquivoEntrada.replace(/(\.\w{0,4})$/, '')}_${tempoInicial}_a_${tempoFinal}.mp4`;
 
 	ffmpeg(nomeVideoEntrada)
 		.setStartTime(obj.segundo_inicial)
